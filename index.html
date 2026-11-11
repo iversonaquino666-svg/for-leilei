@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Leilei ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --lavender:#e8ddff;
+  --blue:#dcecff;
+  --cream:#fffaf0;
+  --purple:#9275c8;
+  --dark:#51436e;
+}
+
+* {box-sizing:border-box;margin:0;padding:0}
+
+body {
+  min-height:100vh;
+  font-family:'DM Sans',sans-serif;
+  color:var(--dark);
+  background:
+    radial-gradient(circle at 10% 15%,#fff8f3 0 8%,transparent 30%),
+    radial-gradient(circle at 90% 10%,#e3efff 0 10%,transparent 35%),
+    radial-gradient(circle at 80% 90%,#eee4ff 0 10%,transparent 35%),
+    #f7f1ff;
+  overflow-x:hidden;
+}
+
+button {font:inherit;cursor:pointer;border:none}
+
+#app {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px 50px;
+  position:relative;
+  overflow:hidden;
+}
+
+.decor {
+  position:fixed;
+  pointer-events:none;
+  z-index:0;
+  opacity:.7;
+  user-select:none;
+}
+
+.d1 {top:7%;left:7%;font-size:28px;transform:rotate(-15deg)}
+.d2 {top:18%;right:8%;font-size:24px}
+.d3 {bottom:13%;left:8%;font-size:25px}
+.d4 {bottom:9%;right:9%;font-size:30px}
+.d5 {top:48%;left:3%;font-size:17px}
+.d6 {top:60%;right:4%;font-size:18px}
+
+.page {
+  display:none;
+  width:100%;
+  max-width:470px;
+  position:relative;
+  z-index:2;
+  animation:appear .55s ease;
+}
+
+.page.active {display:block}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(14px) scale(.98)}
+  to {opacity:1;transform:translateY(0) scale(1)}
+}
+
+.card {
+  background:rgba(255,252,247,.94);
+  border:2px solid white;
+  border-radius:30px;
+  padding:30px 23px;
+  box-shadow:0 14px 40px rgba(111,91,155,.12);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:before {
+  content:"";
+  position:absolute;
+  inset:9px;
+  border:1px dashed #d9c9f1;
+  border-radius:23px;
+  pointer-events:none;
+}
+
+.card-content {position:relative;z-index:1}
+
+.eyebrow {
+  font-size:10px;
+  letter-spacing:2px;
+  color:#9c83c8;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:13px;
+}
+
+h1,h2 {
+  font-family:'Playfair Display',serif;
+  color:#665184;
+  font-weight:600;
+}
+
+h1 {
+  font-size:clamp(29px,8vw,39px);
+  line-height:1.2;
+  margin-bottom:13px;
+}
+
+h2 {font-size:27px;margin-bottom:12px}
+
+p {font-size:14px;line-height:1.8;color:#756888}
+
+.script {
+  font-family:'Caveat',cursive;
+  color:#a17cc9;
+  font-size:25px;
+  margin-top:10px;
+}
+
+.btn {
+  display:inline-block;
+  padding:13px 25px;
+  border-radius:30px;
+  background:#a58bd2;
+  color:white;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 5px 0 #876db7;
+  transition:.2s;
+  margin-top:22px;
+}
+
+.btn:hover {transform:translateY(-2px)}
+.btn:active {transform:translateY(3px);box-shadow:0 2px 0 #876db7}
+
+.cat {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:65px;
+  margin:8px 0 14px;
+  filter:drop-shadow(0 7px 5px rgba(100,78,130,.12));
+  animation:floaty 3s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%,100% {transform:translateY(0) rotate(-3deg)}
+  50% {transform:translateY(-8px) rotate(3deg)}
+}
+
+.cat-bubble {
+  display:inline-block;
+  background:#f0e8ff;
+  padding:10px 15px;
+  border-radius:16px 16px 16px 4px;
+  color:#766292;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+.envelope-wrap {
+  margin:22px auto 10px;
+  width:190px;
+  height:130px;
+  position:relative;
+  cursor:pointer;
+  animation:floaty 3s ease-in-out infinite;
+}
+
+.envelope {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:95px;
+  background:#c9b5ed;
+  border-radius:9px;
+  overflow:hidden;
+  box-shadow:0 9px 17px #b9a7d455;
+}
+
+.envelope:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#b49bdf;
+  clip-path:polygon(0 0,100% 0,50% 68%);
+  z-index:2;
+}
+
+.envelope:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#d8c9f3;
+  clip-path:polygon(0 100%,50% 45%,100% 100%);
+  z-index:3;
+}
+
+.flap {
+  position:absolute;
+  top:35px;
+  left:0;
+  width:100%;
+  height:95px;
+  background:#bca6e4;
+  clip-path:polygon(0 0,100% 0,50% 70%);
+  z-index:4;
+}
+
+.seal {
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:75px;
+  transform:translateX(-50%);
+  font-size:26px;
+}
+
+.progress {
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  margin:0 auto 16px;
+}
+
+.progress span {
+  width:25px;
+  height:6px;
+  border-radius:20px;
+  background:#e4dcef;
+}
+
+.progress span.done {background:#a58bd2}
+
+.heart-area {
+  height:240px;
+  margin:17px 0 5px;
+  border-radius:22px;
+  border:2px dashed #d7c9ee;
+  background:#f0eaff;
+  position:relative;
+  overflow:hidden;
+}
+
+.heart {
+  position:absolute;
+  background:transparent;
+  font-size:31px;
+  animation:heartbeat 1.6s infinite;
+  transition:.2s;
+  padding:4px;
+}
+
+.heart:active {transform:scale(.7)}
+
+@keyframes heartbeat {
+  0%,100% {transform:scale(1)}
+  50% {transform:scale(1.17)}
+}
+
+.heart.found {opacity:0;pointer-events:none}
+
+.hint {font-size:12px;color:#9a89b3;margin-top:12px}
+
+.message-reveal {
+  min-height:47px;
+  margin-top:12px;
+  color:#8a6cb2;
+  font-family:'Caveat',cursive;
+  font-size:23px;
+}
+
+.puzzle-board {
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  margin:25px 0 15px;
+}
+
+.piece {
+  width:88px;
+  height:90px;
+  border:2px solid white;
+  border-radius:16px;
+  background:#e9e0fa;
+  color:#9277bd;
+  font-family:'Caveat',cursive;
+  font-size:34px;
+  font-weight:700;
+  box-shadow:0 5px 12px #a48bc322;
+  transition:.2s;
+}
+
+.piece.selected {
+  background:#cdb9ed;
+  border:2px solid #9e80cd;
+  transform:translateY(-7px);
+}
+
+.piece.correct {background:#dcecff;color:#688db5}
+
+.puzzle-hint {font-size:12px;margin-top:10px}
+
+.gift-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:22px 0 10px;
+}
+
+.gift {
+  background:#f0e8ff;
+  border:2px solid white;
+  border-radius:17px;
+  padding:17px 5px;
+  font-size:39px;
+  box-shadow:0 5px 12px #a48bc322;
+  transition:.2s;
+}
+
+.gift:hover {transform:translateY(-5px) rotate(-3deg)}
+.gift:active {transform:scale(.92)}
+.gift.chosen {background:#dcecff;border-color:#b9d2ee}
+
+.letter-paper {
+  background:
+    repeating-linear-gradient(transparent,transparent 31px,#eee6f5 32px),
+    #fffdf8;
+  border:1px solid #eadff2;
+  border-radius:18px;
+  padding:25px 19px;
+  text-align:left;
+  margin-top:20px;
+  box-shadow:0 5px 15px #9b87b51a;
+}
+
+.letter-paper h3 {
+  font-family:'Caveat',cursive;
+  font-size:27px;
+  color:#8267ad;
+  margin-bottom:15px;
+}
+
+.letter-paper p {
+  font-size:13px;
+  line-height:1.9;
+  color:#756b7d;
+  margin-bottom:15px;
+}
+
+.signature {
+  font-family:'Caveat',cursive;
+  color:#8767b2;
+  font-size:25px;
+  margin-top:15px;
+}
+
+.hidden {display:none!important}
+
+@media(max-width:380px) {
+  .card {padding:26px 17px}
+  .piece {width:76px;height:82px}
+  .letter-paper {padding:20px 15px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="decor d1">🎀</div>
+<div class="decor d2">✧</div>
+<div class="decor d3">🌷</div>
+<div class="decor d4">♡</div>
+<div class="decor d5">✿</div>
+<div class="decor d6">🐾</div>
+
+<div id="app">
+
+<section class="page active" id="page1">
+  <div class="card">
+    <div class="card-content">
+      <div class="envelope-wrap" onclick="startAdventure()">
+        <div class="flap"></div>
+        <div class="envelope"></div>
+        <div class="seal">♡</div>
+      </div>
+
+      <h1>Hiii, Leilei! 🥺</h1>
+      <p>I made a little something for u. There's something waiting at the end, but first, I need u to play along with me.</p>
+      <div class="script">Are u ready, pretty girl?</div>
+      <button class="btn" onclick="startAdventure()">Open the invitation ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page2">
+  <div class="card">
+    <div class="card-content">
+      <div class="progress">
+        <span class="done"></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="cat">🐈</div>
+      <div class="cat-bubble">psst... Leilei! Over here!</div>
+      <h2>Welcome to our little world!</h2>
+      <p>I'm your tiny guide for today. There are a few little things hidden around here, and I need your help finding them.</p>
+      <p style="margin-top:10px">First mission: find the 3 hearts I've hidden!</p>
+      <button class="btn" onclick="goTo(3)">Let's find them ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page3">
+  <div class="card">
+    <div class="card-content">
+      <div class="progress">
+        <span class="done"></span><span class="done"></span><span></span><span></span>
+      </div>
+
+      <h2>Find the little hearts!</h2>
+      <p>There are 3 hidden hearts somewhere in this little space. Tap each one to collect it.</p>
+
+      <div class="heart-area" id="heartArea">
+        <button class="heart" style="left:12%;top:16%" onclick="findHeart(this,0)">♡</button>
+        <button class="heart" style="left:70%;top:27%" onclick="findHeart(this,1)">♡</button>
+        <button class="heart" style="left:43%;top:68%" onclick="findHeart(this,2)">♡</button>
+        <span style="position:absolute;left:8%;bottom:8%;font-size:24px">🌷</span>
+        <span style="position:absolute;right:8%;top:8%;font-size:22px">✿</span>
+        <span style="position:absolute;right:13%;bottom:8%;font-size:23px">🎀</span>
+        <span style="position:absolute;left:45%;top:8%;font-size:17px;color:#c0a9e5">✧</span>
+      </div>
+
+      <p class="hint" id="heartCount">Hearts found: 0 / 3</p>
+      <div class="message-reveal" id="heartMessage">Find all three! ♡</div>
+      <button class="btn hidden" id="heartNext" onclick="goTo(4)">Continue ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page4">
+  <div class="card">
+    <div class="card-content">
+      <div class="progress">
+        <span class="done"></span><span class="done"></span><span class="done"></span><span></span>
+      </div>
+
+      <div class="cat" style="font-size:52px">🐱</div>
+      <h2>Fix the puzzle!</h2>
+      <p>The pieces got mixed up! Tap two pieces to switch their places. Arrange them from 1 to 3.</p>
+
+      <div class="puzzle-board" id="puzzleBoard">
+        <button class="piece" onclick="selectPiece(this)">3</button>
+        <button class="piece" onclick="selectPiece(this)">1</button>
+        <button class="piece" onclick="selectPiece(this)">2</button>
+      </div>
+
+      <p class="puzzle-hint" id="puzzleHint">Tap two pieces to swap them.</p>
+      <div class="message-reveal" id="puzzleMessage"></div>
+      <button class="btn hidden" id="puzzleNext" onclick="goTo(5)">Continue ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page5">
+  <div class="card">
+    <div class="card-content">
+      <div class="progress">
+        <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span>
+      </div>
+
+      <h2>Pick a gift, Leilei!</h2>
+      <p>I prepared three little gifts. U can only pick one, so choose whichever catches your eye!</p>
+
+      <div class="gift-grid">
+        <button class="gift" onclick="chooseGift(this,0)">
+          🎁
+          <div style="font-size:10px;color:#9b8ab5;margin-top:7px">No. 1</div>
+        </button>
+        <button class="gift" onclick="chooseGift(this,1)">
+          🎀
+          <div style="font-size:10px;color:#9b8ab5;margin-top:7px">No. 2</div>
+        </button>
+        <button class="gift" onclick="chooseGift(this,2)">
+          🧸
+          <div style="font-size:10px;color:#9b8ab5;margin-top:7px">No. 3</div>
+        </button>
+      </div>
+
+      <div class="message-reveal" id="giftMessage">Choose one! ♡</div>
+      <button class="btn hidden" id="giftNext" onclick="goTo(6)">Continue ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page6">
+  <div class="card">
+    <div class="card-content">
+      <div class="cat">🐈‍⬛</div>
+      <h2>One last thing...</h2>
+      <p>You've finished every little mission! I saved something special for u inside this envelope.</p>
+
+      <div class="envelope-wrap" onclick="openLetter()">
+        <div class="flap"></div>
+        <div class="envelope"></div>
+        <div class="seal">💌</div>
+      </div>
+
+      <div class="script">This one's from me to u.</div>
+      <button class="btn" onclick="openLetter()">Open your letter ♡</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page7">
+  <div class="card">
+    <div class="card-content">
+      <div class="cat" style="font-size:48px">🐱💗</div>
+
+      <div class="letter-paper">
+        <h3>HELLO MY LEILEI,</h3>
+
+        <p>I want u to know that you've already become someone incredibly special to me. Though we haven't been together for that long, you've already made such a meaningful place in my life. Maybe u don't even realize just how much u mean to me, but I hope these words give u an idea of how much I appreciate having u around. :)</p>
+
+        <p>I never expected someone to become this important to me in such a short time. Yet here u are, someone who's slowly become a special part of my everyday life. You've made ordinary moments feel different, given me more things to look forward to, and brought happiness into my days in ways u probably don't even notice. And honestly, I'm really grateful that I get to experience all of that with u. :)</p>
+
+        <p>I want u to know that u already hold a place in my heart that no one else does. It's a place that's yours because of who u are, the way u make me feel, and all the little things that make u the person I've grown so fond of. I don't think I could ever put that feeling into words perfectly, but I hope my actions will always make u feel how much u mean to me.</p>
+
+        <p>I know we still have so much to learn about each other. There are still countless conversations to have, stories to share, and moments we haven't experienced yet. And that's something I'm genuinely looking forward to. I don't expect everything to be perfect all the time. I just want us to keep understanding each other, growing together, and making the most out of the time we get to share. :)</p>
+
+        <p>I also want to remind u that u deserve to feel appreciated even on the most ordinary days. I hope I can keep giving u reasons to feel loved, valued, and reassured. I may not always find the perfect words to express everything, but please know that what I feel for u is genuine. I want my actions to speak just as much as my words do.</p>
+
+        <p>I hope u never feel like u have to question how much u matter to me. I want u to feel comfortable being yourself around me, sharing whatever's on your mind, and knowing that u have someone who genuinely wants to understand u. I want to be there for the happy moments, the difficult ones, and even the little things u might think aren't worth sharing. Those things matter to me because they're part of u.</p>
+
+        <p>Thank u for being part of my life, Leilei. Thank u for being yourself, for the happiness u bring, and for giving me another person to be genuinely grateful for. I'm happy that our paths crossed, and even happier that I get to know more of u as time goes by. :)</p>
+
+        <p>There's still so much ahead of us, and I look forward to experiencing those things with u. I hope we get to create countless memories, learn more about each other, and continue finding reasons to choose one another. I don't know exactly what every day ahead will look like, but I know that I'm genuinely happy to have u in my life.</p>
+
+        <p>Happy 11/11, my Leilei. I hope u never forget how much u mean to me. I'm so glad it's u. :)</p>
+
+        <div class="signature">
+          With all my love,<br>
+          Your Iven
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+let heartsFound = 0;
+let selectedPiece = null;
+let giftChosen = false;
+
+const heartMessages = [
+  "If I could, I'd remind u every day how special u are to me. :)",
+  "I hope u know that even the smallest moments with u mean so much to me.",
+  "One more heart for the girl who makes my days a little brighter. :)"
+];
+
+const giftMessages = [
+  "A little gift for someone who deserves all the happiness life has to offer. :)",
+  "If I could wrap up how much u mean to me, it would probably look like this.",
+  "A reminder that u are appreciated, even on days when u don't realize it."
+];
+
+function goTo(number) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page" + number).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function startAdventure() {
+  goTo(2);
+}
+
+function findHeart(button,index) {
+  if(button.classList.contains("found")) return;
+
+  button.classList.add("found");
+  heartsFound++;
+
+  document.getElementById("heartCount").textContent =
+    "Hearts found: " + heartsFound + " / 3";
+
+  if(heartsFound === 3) {
+    document.getElementById("heartMessage").textContent =
+      "U found all three! Just like these hearts, I hope u always remember that u have a special place in mine. :)";
+
+    document.getElementById("heartNext").classList.remove("hidden");
+  } else {
+    document.getElementById("heartMessage").textContent =
+      heartMessages[index];
+  }
+}
+
+function selectPiece(button) {
+  if(button.classList.contains("correct")) return;
+
+  if(!selectedPiece) {
+    selectedPiece = button;
+    button.classList.add("selected");
+    document.getElementById("puzzleHint").textContent =
+      "Now choose another piece to swap.";
+    return;
+  }
+
+  if(selectedPiece === button) {
+    selectedPiece.classList.remove("selected");
+    selectedPiece = null;
+    document.getElementById("puzzleHint").textContent =
+      "Tap two pieces to swap them.";
+    return;
+  }
+
+  const firstValue = selectedPiece.textContent;
+  selectedPiece.textContent = button.textContent;
+  button.textContent = firstValue;
+
+  selectedPiece.classList.remove("selected");
+  selectedPiece = null;
+
+  checkPuzzle();
+}
+
+function checkPuzzle() {
+  const pieces = [...document.querySelectorAll(".piece")];
+  const values = pieces.map(piece => piece.textContent.trim());
+
+  if(values.join("") === "123") {
+    pieces.forEach(piece => {
+      piece.classList.add("correct");
+      piece.disabled = true;
+    });
+
+    document.getElementById("puzzleHint").textContent =
+      "You fixed it!";
+
+    document.getElementById("puzzleMessage").textContent =
+      "And somehow, in the middle of everything, I'm really glad I found u. :)";
+
+    document.getElementById("puzzleNext").classList.remove("hidden");
+  } else {
+    document.getElementById("puzzleHint").textContent =
+      "Not quite! Take your time, u've got this. ♡";
+  }
+}
+
+function chooseGift(button,index) {
+  if(giftChosen) return;
+
+  giftChosen = true;
+  button.classList.add("chosen");
+
+  document.querySelectorAll(".gift").forEach(gift => {
+    gift.disabled = true;
+  });
+
+  document.getElementById("giftMessage").textContent =
+    giftMessages[index];
+
+  document.getElementById("giftNext").classList.remove("hidden");
+}
+
+function openLetter() {
+  goTo(7);
+}
+</script>
+
+</body>
+</html>
